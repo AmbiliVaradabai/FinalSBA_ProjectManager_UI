@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/ng2-slim-loading-bar/style.css";
+@import "../node_modules/ngx-toastr/toastr.css";
+@import "../node_modules/font-awesome/css/font-awesome.css";
+
+label{
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.list-item
+{
+    padding: 0px;
+    border: 0px;
+    padding-left: 0px;
+    margin-bottom: 0px
+}
+
+.hrLine{
+    border-top: 2px solid darkblue;
+}
+
+.hrList
+{
+    border-top: 2px dotted darkblue;
+}
+
+.toast {
+    opacity: 1 !important;
+}
