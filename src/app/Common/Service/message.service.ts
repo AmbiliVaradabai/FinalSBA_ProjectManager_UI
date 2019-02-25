@@ -23,29 +23,30 @@ export class MessageService {
          });
      }
    
-     success(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
+    success(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
          this.keepAfterRouteChange = keepAfterRouteChange;
          this.toastr.success(message,title, {timeOut:timeout});
      }
+
+    clear() {
+        this.toastr.clear();
+    }      
  
-     error(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
+    error(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
          this.keepAfterRouteChange = keepAfterRouteChange;
          this.toastr.error(message,title, {timeOut:timeout});
-     }
+    }
   
-     info(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
+    info(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
          this.keepAfterRouteChange = keepAfterRouteChange;
          this.toastr.info(message,title, {timeOut:timeout});
-     }
+    }
  
-     warn(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
+    warn(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
          this.keepAfterRouteChange = keepAfterRouteChange;
          this.toastr.warning(message,title, {timeOut:timeout});
-     }
- 
-     clear() {
-         this.toastr.clear();
-     }  
+    }
+  
 }
 
 

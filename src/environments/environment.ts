@@ -9,10 +9,14 @@ export const environment = {
   baseUrl:"http://localhost:3000",
   
     //End Points
-  user_get:"/users",
-  user_add:"/users/add",
-  user_edit:"/users/edit",
-  user_delete:"/users/delete",
+  user_get        :"/users",
+  user_add        :"/users/add",
+  user_edit       :"/users/edit",
+  user_delete     :"/users/delete",
+  project_add     :"/projects/add",
+  project_get     :"/projects",
+  project_edit    :"/projects/edit",
+  project_delete  :"/projects/delete"
 
 };
 

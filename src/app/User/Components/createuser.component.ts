@@ -13,9 +13,10 @@ export class CreateuserComponent implements OnInit {
   
   UsersList       : User[];
   UserAddEditForm : FormGroup;
-  UserAction      : String ;
   SortKey         : string;
-  SearchKey       : string;
+  SearchKey       : string;  
+  UserAction      : String ;
+
 
   constructor(private formbuilder: FormBuilder,
               private _userSrvc: UserServiceService,
@@ -27,6 +28,7 @@ export class CreateuserComponent implements OnInit {
     this.retrieveUserList();
   }
 
+  //Initialising the form 
   createForm(){
     this.UserAddEditForm = this.formbuilder.group({
       firstname :['', Validators.required],
@@ -37,6 +39,7 @@ export class CreateuserComponent implements OnInit {
     this.UserAction ="Add";
   }
 
+  //Function called while submitting the form and add/edit action will be performed based on user action.
   addOrEditUser() {
     if (this.UserAction == 'Add') {
       this.addUser();
@@ -45,7 +48,6 @@ export class CreateuserComponent implements OnInit {
        this.updateUser();
     }
   }
-
 
   //Code to add new user to the system 
   addUser() {
@@ -57,7 +59,6 @@ export class CreateuserComponent implements OnInit {
     this._userSrvc.addUser(newUser)
       .subscribe(response => {
         if (response.Success == true) {
-          //show success message and refresh the list
           this._msgSrvc.success('User added successfully!', 'Success', 3000);
           this.retrieveUserList();
           this.reset();
@@ -67,11 +68,12 @@ export class CreateuserComponent implements OnInit {
       });
   }
 
+  //rest the add/edit user form
   reset() {
     this.UserAddEditForm.reset();
-    this.UserAction ='Add';
     this.SearchKey = null;
-    this.SortKey = null;
+    this.SortKey = null;    
+    this.UserAction ='Add';  
   }
 
   //Code to retrieve the users list 
