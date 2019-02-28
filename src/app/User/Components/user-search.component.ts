@@ -10,7 +10,7 @@ declare var $ :any;
 })
 export class UserSearchComponent implements OnInit {
   @Input()  name: string;
-  @Output() managerSelected = new EventEmitter<User>();
+  @Output() userSelected = new EventEmitter<User>();
 
   UsersList       : User[];
   SortKey         : string;
@@ -35,24 +35,23 @@ export class UserSearchComponent implements OnInit {
   }
 
   
-  searchManager(searchValue: string) {
+  searchUser(searchValue: string) {
     this.SearchKey = searchValue;
     this.refreshList();
   }
 
-  selectManager(userID: number){
+  selectUser(userID: number){
     this.SelectedUserID = userID;
     this.enableAdd = true;
   }
 
-  addManager(){
+  addUser(){
     this._userSrvc.getUserByID(this.SelectedUserID)
       .subscribe(response =>{
           if(response.Success==true)
           {
-            console.log(this.SelectedUserID)
-            this.managerSelected.emit(response.Data);
-            $('#managerSearchModel').modal('toggle');
+            this.userSelected.emit(response.Data);
+            $('#userSearch').modal('toggle');
           }
       });
   }

@@ -18,7 +18,7 @@ export class ProjectService {
     return this.http.post<ServerResponse<Project>>(uri, newProject);
   }
 
-  //get Users list
+  //get projects list
   retrieveProjects(searchKey?: string, sortKey?: string): Observable<ServerResponse<Project[]>> {
     let params = new HttpParams();  
     if (searchKey)

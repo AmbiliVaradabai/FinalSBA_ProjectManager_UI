@@ -150,15 +150,14 @@ export class CreateProjectComponent implements OnInit {
     this.Manager = null;  
     this.setdate = false;      
   }
-
     
   //Calling from manager search 
-  onManagerSelected(manager: User) {
+  onManagerSelect(manager: User) {
     this.Manager = manager;
     this.ProjectAddEditForm.get('manager').setValue(`${this.Manager.FirstName} ${this.Manager.LastName}`);
   }
   
-  //Code to retrieve the users list 
+  //Code to retrieve the project list 
   retrieveProjectList(){
     this._ProjSrvc.retrieveProjects(this.SearchKey, this.SortKey)
     .subscribe(response => {

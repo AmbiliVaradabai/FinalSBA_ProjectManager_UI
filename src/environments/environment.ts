@@ -8,7 +8,7 @@ export const environment = {
   //Base Api Url 
   baseUrl:"http://localhost:3000",
   
-    //End Points
+  //End Points
   user_get        :"/users",
   user_add        :"/users/add",
   user_edit       :"/users/edit",
@@ -16,8 +16,13 @@ export const environment = {
   project_add     :"/projects/add",
   project_get     :"/projects",
   project_edit    :"/projects/edit",
-  project_delete  :"/projects/delete"
-
+  project_delete  :"/projects/delete",
+  parentTask_get  :"/parenttasks",
+  parentTask_add  :"/parenttasks/add" ,
+  task_get        :"/tasks",
+  task_add        :"/tasks/add",
+  task_edit       :"/tasks/edit",
+  task_delete     :"/tasks/delete"
 };
 
 /*

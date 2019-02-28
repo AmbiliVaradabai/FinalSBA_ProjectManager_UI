@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpHeaders,HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { User } from '../Model/usermodel';
 import { ServerResponse } from '../../Common/Model/commonresponse';
@@ -20,7 +20,6 @@ export interface IUserService {
 export class UserServiceService implements IUserService {
 
   baseUrl = environment.baseUrl;
-
   constructor(private http: HttpClient) { }
 
   //Add user Api Call

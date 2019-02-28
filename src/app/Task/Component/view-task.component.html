@@ -1,0 +1,80 @@
+<div class="col-md-12">
+
+  <div class="row">
+    
+    <div class="col-md-4 ">
+      <div class="row">
+        <div class="col-md-3 ">
+          <label for="projectName" style="font-weight: bold;font-size: 12px" >Project:</label>
+        </div>
+        <div class="col-md-8">
+          <input type="text" class="form-control" name="projectName" aria-describedby="projectName" readonly [(ngModel)]="project && project.Project">
+        </div>
+        <div class="col-md-1 pl-0 pr-0">
+          <button type="button" class="btn btn-default pl-0 pr-0"  style="font-size: 10px;font-weight: bold" data-toggle="modal" data-target="#projectSearch">
+            <span class="fa fa-search"></span>Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-md-1"></div> -->
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-3 pl-0 pr-0" style="text-align:right">
+          <label style="font-weight: bold;font-size: 12px"> Sort Task By:</label>
+        </div>
+        <div class="col-md-9">
+          <button type="button" style="width :65px; height:30px ;font-size: 10px" [disabled]="!TasksList" (click)="sortTasks('StartDate')">Start Date</button> &nbsp;
+          <button type="button" style="width :65px; height:30px ;font-size: 10px" [disabled]="!TasksList" (click)="sortTasks('EndDate')">End Date</button>&nbsp;
+          <button type="button" style="width :65px; height:30px ;font-size: 10px" [disabled]="!TasksList" (click)="sortTasks('Priority')">Priority</button>&nbsp;
+          <button type="button" style="width :65px; height:30px ;font-size: 10px" [disabled]="!TasksList" (click)="sortTasks('Status')">Completed</button>&nbsp;
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<br>
+
+
+<div *ngIf="TasksList && TasksList.length>0" class="col-md-12">
+  <hr class="hrList" />
+  <table *ngFor="let task of TasksList" class="table table-borderless taskTable" cellpadding=0>
+    <thead >
+      <td style="width: 15%; font-weight: bold;font-size: 13px; padding-top: 0px;padding-bottom: 0px">Task</td>
+      <td style="width: 20%; font-weight: bold;font-size: 13px; padding-top: 0px;padding-bottom: 0px" >Parent</td>
+      <td style="width: 2%; font-weight: bold;font-size: 13px;padding-top: 0px;padding-bottom: 0px" >Priority</td>
+      <td style="width: 15%;font-weight: bold;font-size: 13px;padding-top: 0px;padding-bottom: 0px">Start</td>
+      <td style="width: 16%;font-weight: bold;font-size: 13px;padding-top: 0px;padding-bottom: 0px">End</td>
+      <td style="width: 35%;font-weight: bold;font-size: 13px;padding-top: 0px;padding-bottom: 0px"></td>
+    </thead>
+    <tbody>
+      <tr >
+        <td>
+          <label style ="font-size: 11px; font-weight: normal;text-align :center; background-color:#f2f2f2 ; width: 120px; height: 60px; ">
+            <span class="mt-10">{{task.Task}}</span></label>
+        </td>
+        <td>
+          <label style ="font-size: 11px; font-weight: normal; background-color:#f2f2f2 ;width: 175px; height: 60px;" *ngIf="!task.Parent">This Task Has NO Parent</label>
+          <label style ="font-size: 11px;font-weight: normal; background-color:#f2f2f2 ; width: 175px; height: 60px;" *ngIf="task.Parent">{{task.Parent.ParentTask}}</label>
+        </td>
+        <td style ="font-size: 11px" >{{task.Priority}}</td>
+        <td style ="font-size: 11px" >{{task.StartDate | date:'dd-MM-yyyy'}}</td>
+        <td style ="font-size: 11px" >{{task.EndDate | date:'dd-MM-yyyy'}}</td>
+        <td *ngIf="task.Status==0">
+          <button type="button" style="width :60px; height:30px ;font-size: 10px"  (click)="editTask(task.TaskID)">Edit</button>&nbsp;
+          <button type="button" style="width :60px; height:30px ;font-size: 10px" (click)="endTask(task.TaskID)">End Task</button>
+        </td>
+        <td style ="font-size: 11px" *ngIf="task.Status==1">Completed</td>
+      </tr>
+      <tr class= "pd-0">
+        <td colspan="6">
+          <hr class="hrList" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-search-project (projectSelected)="onProjectSelect($event)"></app-search-project>
