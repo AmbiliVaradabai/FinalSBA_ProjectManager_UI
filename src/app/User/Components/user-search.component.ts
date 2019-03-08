@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { UserServiceService } from '../Service/user-service.service'
 import { User } from '../Model/usermodel';
+import { UserServiceService } from '../Service/user-service.service'
+
 declare var $ :any;
 
 @Component({
@@ -21,10 +22,10 @@ export class UserSearchComponent implements OnInit {
   constructor(private _userSrvc: UserServiceService) { }
 
   ngOnInit() {
-    this.refreshList();
+    this.retrieveUsers();
   }
 
-  refreshList(){
+  retrieveUsers(){
     this._userSrvc.retrieveUsers(this.SearchKey, this.SortKey)
       .subscribe(response => {
         if (response.Success == true) {
@@ -34,15 +35,14 @@ export class UserSearchComponent implements OnInit {
       this.enableAdd = false;
   }
 
-  
-  searchUser(searchValue: string) {
-    this.SearchKey = searchValue;
-    this.refreshList();
-  }
-
   selectUser(userID: number){
     this.SelectedUserID = userID;
     this.enableAdd = true;
+  }
+  
+  searchUser(searchValue: string) {
+    this.SearchKey = searchValue;
+    this.retrieveUsers();
   }
 
   addUser(){

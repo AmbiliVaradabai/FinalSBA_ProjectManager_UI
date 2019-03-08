@@ -106,14 +106,14 @@ export class CreateProjectComponent implements OnInit {
 
   //Below function will be invoked while submitting form and based on user action, corresponding actions will be performed.
   addOrEditProject() {
-    if (this.ProjectAddEditForm.valid) {
+    //if (this.ProjectAddEditForm.valid) {
       if (this.UserAction == 'Add') {
         this.createProject();
       }
       else {
         this.updateProject();
       }
-    }
+    //}
   }
 
   //Function to create a new project 
@@ -175,14 +175,10 @@ export class CreateProjectComponent implements OnInit {
 
   //Sort user based on name / id
   sortProjects(sortKey: string){
-    if(sortKey=='StartDate')
-    this.SortKey = 'StartDate';
-    else if(sortKey=='EndDate')
-    this.SortKey = 'EndDate';
-    else if(sortKey=='Priority')
-    this.SortKey = 'Priority';
-    else if(sortKey=='CompletedTasks')
-    this.SortKey = 'CompletedTasks';    
+    if(sortKey=='StartDate') this.SortKey = 'StartDate';
+    else if(sortKey=='EndDate')this.SortKey = 'EndDate';
+    else if(sortKey=='Priority')this.SortKey = 'Priority';
+    else if(sortKey=='CompletedTasks')this.SortKey = 'CompletedTasks';    
     this.retrieveProjectList();
   }
 
@@ -202,7 +198,6 @@ export class CreateProjectComponent implements OnInit {
     }
     this._ProjSrvc.updateProject(ProjectDetails)
       .subscribe(response => {
-        console.log(response);
         if (response.Success == true) {
           this._msgSrvc.success('Project has been updated successfully!', 'Success', 3000);
           this.reset();
@@ -219,7 +214,7 @@ export class CreateProjectComponent implements OnInit {
     this._ProjSrvc.getProjectByID(projectID)
       .subscribe(response => {
         if (response.Success == true) {
-          console.log(response.Data)
+
           this.ProjectAddEditForm.controls["projectname"].setValue(response.Data.Project);
           this.ProjectAddEditForm.controls["projectid"].setValue(response.Data.ProjectID);          
           this.ProjectAddEditForm.controls["priority"].setValue(response.Data.Priority);
@@ -231,17 +226,9 @@ export class CreateProjectComponent implements OnInit {
             let newStarDate = new Date(response.Data.StartDate)
             let newEndDate  = new Date(response.Data.EndDate)
 
-            ProjstartDate = <NgbDateStruct>{
-              year  : newStarDate.getFullYear(),
-              month : newStarDate.getMonth() + 1, 
-              day   : newStarDate.getDate()
-            };
+            ProjstartDate = <NgbDateStruct>{ year  : newStarDate.getFullYear(), month : newStarDate.getMonth() + 1,day   : newStarDate.getDate()  };
 
-            ProjendDate = <NgbDateStruct>{
-              year  : newEndDate.getFullYear(),
-              month : newEndDate.getMonth() + 1, 
-              day   : newEndDate.getDate()
-            };
+            ProjendDate = <NgbDateStruct>{year  : newEndDate.getFullYear(), month : newEndDate.getMonth() + 1, day   : newEndDate.getDate()};
             this.ProjectAddEditForm.controls["startdate"].setValue(ProjstartDate);
             this.ProjectAddEditForm.controls["enddate"].setValue(ProjendDate);
           }
@@ -252,9 +239,7 @@ export class CreateProjectComponent implements OnInit {
             this._UserSrvc.getUserByID(response.Data.ManagerID)
               .subscribe(response => {
                 this.Manager = response.Data;
-                if (response.Data) {
-                  this.ProjectAddEditForm.controls["manager"].setValue(`${this.Manager.FirstName} ${this.Manager.LastName}`);
-                }
+                if (response.Data) {this.ProjectAddEditForm.controls["manager"].setValue(`${this.Manager.FirstName} ${this.Manager.LastName}`);}
               });
           }
           this.UserAction = 'Update';

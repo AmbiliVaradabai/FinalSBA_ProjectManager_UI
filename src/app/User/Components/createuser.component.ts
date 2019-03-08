@@ -18,9 +18,9 @@ export class CreateuserComponent implements OnInit {
   UserAction      : String ;
 
 
-  constructor(private formbuilder: FormBuilder,
-              private _userSrvc: UserServiceService,
-              private _msgSrvc :MessageService) {
+  constructor(private formbuilder : FormBuilder,
+              private _userSrvc   : UserServiceService,
+              private _msgSrvc    : MessageService) {
     this.createForm();
   }
 
@@ -88,8 +88,9 @@ export class CreateuserComponent implements OnInit {
 
 
 //Function is invoked while clikcing the edit button in user list and this load the data in useraddeditform.
+
   editUser(userID) {
-    this._userSrvc.getUserByID(userID)
+     this._userSrvc.getUserByID(userID)
       .subscribe(response => {
         if (response.Success == true) {
           this.UserAddEditForm = this.formbuilder.group({
@@ -143,6 +144,7 @@ export class CreateuserComponent implements OnInit {
 
   //Search the user based on first name / last name
   SearchUser(searchValue: string) {
+    debugger;
     this.SearchKey = searchValue;
     this.retrieveUserList();
   }

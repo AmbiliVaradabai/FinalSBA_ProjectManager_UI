@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
-
+//import { Router, NavigationStart } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
@@ -10,17 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 export class MessageService {
   private keepAfterRouteChange = false;
   
-     constructor(private router: Router, private toastr:ToastrService) {
-         
-         router.events.subscribe(event => {
-             if (event instanceof NavigationStart) {
-                 if (this.keepAfterRouteChange) {
-                     this.keepAfterRouteChange = false;
-                 } else {
-                     this.toastr.clear();
-                 }
-             }
-         });
+     constructor(private toastr:ToastrService) {
      }
    
     success(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
@@ -28,23 +17,9 @@ export class MessageService {
          this.toastr.success(message,title, {timeOut:timeout});
      }
 
-    clear() {
-        this.toastr.clear();
-    }      
- 
-    error(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
+     error(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
          this.keepAfterRouteChange = keepAfterRouteChange;
          this.toastr.error(message,title, {timeOut:timeout});
-    }
-  
-    info(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
-         this.keepAfterRouteChange = keepAfterRouteChange;
-         this.toastr.info(message,title, {timeOut:timeout});
-    }
- 
-    warn(message: string, title:string,timeout:number, keepAfterRouteChange = false) {
-         this.keepAfterRouteChange = keepAfterRouteChange;
-         this.toastr.warning(message,title, {timeOut:timeout});
     }
   
 }

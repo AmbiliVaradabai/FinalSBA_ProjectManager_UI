@@ -37,7 +37,7 @@ export class ViewTaskComponent implements OnInit {
     .subscribe(response => {
       if (response.Success == true) {
         if (response.Data.length == 0) {
-          this._msgSrvc.warn('No taks found under the project:' + this.project.Project, 'Warning', 3000);
+          this._msgSrvc.error('No taks found under the project:' + this.project.Project, 'Warning', 3000);
         }
         this.TasksList = response.Data;
         }
