@@ -57,7 +57,7 @@ class MockProjectService {
     success(message: string, title:string,timeout:number, keepAfterRouteChange = false) {}
   }
   
-xdescribe('CreateProjectComponent', () => {
+describe('CreateProjectComponent', () => {
   let component: CreateProjectComponent;
   let fixture: ComponentFixture<CreateProjectComponent>;
 

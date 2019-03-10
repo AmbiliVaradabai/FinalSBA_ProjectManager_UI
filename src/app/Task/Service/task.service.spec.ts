@@ -10,7 +10,7 @@ import {
   } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
-xdescribe('TaskService', () => {
+describe('TaskService', () => {
     const apiUrl = 'http://localhost:3000/tasks';
     let service: TaskService;
     let mockBackend: MockBackend;

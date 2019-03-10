@@ -39,7 +39,7 @@ class MockParentTaskService {
     }
   }
   
-  xdescribe('SearchtaskComponent', () => {
+  describe('SearchtaskComponent', () => {
     let component: SearchtaskComponent;
     let fixture: ComponentFixture<SearchtaskComponent>;
   

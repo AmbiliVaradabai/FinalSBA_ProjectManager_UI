@@ -34,7 +34,7 @@ class MockMessageService {
   success(message: string, title:string,timeout:number, keepAfterRouteChange = false) {}
 }
 
-xdescribe('SearchProjectComponent', () => {
+describe('SearchProjectComponent', () => {
   let component: SearchProjectComponent;
   let fixture: ComponentFixture<SearchProjectComponent>;
 

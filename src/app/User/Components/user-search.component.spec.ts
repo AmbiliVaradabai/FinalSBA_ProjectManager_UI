@@ -35,7 +35,7 @@ class MockMessageService {
   }
 }
 
-xdescribe('UserSearchComponent', () => {
+describe('UserSearchComponent', () => {
     let fixture;
     let component:UserSearchComponent;
   

@@ -11,7 +11,7 @@ import {
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
 
-xdescribe('ParentTaskService', () => {
+describe('ParentTaskService', () => {
     const apiUrl = 'http://localhost:3000/parenttasks';
     let service: ParentTaskService;
     let mockBackend: MockBackend;

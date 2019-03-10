@@ -104,7 +104,7 @@ class MockParentTaskService {
     success(message: string, title:string,timeout:number, keepAfterRouteChange = false) {}
   }
 
-xdescribe('CreateTaskComponent', () => {
+describe('CreateTaskComponent', () => {
     let component: CreateTaskComponent;
     let fixture: ComponentFixture<CreateTaskComponent>;
 
@@ -144,12 +144,11 @@ xdescribe('CreateTaskComponent', () => {
     expect(component.isThisParent =false).toEqual(false);  
   })); 
   
-  it('should run #createTask()', async(() => {
-    component.isThisParent =true    
-    const result= component.createTask()
-    expect(component.isThisParent =true).toEqual(true);  
-  })); 
-
+  // it('should run #createTask()', async(() => {
+  //   component.isThisParent =true    
+  //   const result= component.createTask()
+  //   expect(component.isThisParent =true).toEqual(true);  
+  // })); 
 
   it('should run #onUserSelect()', async(() => {
     component.isThisParent=false
@@ -161,7 +160,7 @@ xdescribe('CreateTaskComponent', () => {
   it('should run #onProjectSelect()', async(() => {
     component.isThisParent=false
     let project ={ProjectID:2,Project:"Project1", Priority:1}
-    //const result = component.onProjectSelect(project);
+    const result = component.onProjectSelect(project);
     //expect(component.isThisParent =false).toEqual(false);      
   })); 
 
