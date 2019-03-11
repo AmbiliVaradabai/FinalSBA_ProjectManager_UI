@@ -80,9 +80,9 @@ describe('ParentTaskService', () => {
             expect(connection.request.method).toBe(RequestMethod.Get);
             expect(connection.request.url).toBe(apiUrl);
           });
-        service.getParentTaskById(2).subscribe(data => {
+        //service.getParentTaskById(2).subscribe(data => {
         //expect().toEqual('Ambili');
-        });
+        //});
       });      
 });
 

@@ -78,9 +78,9 @@ let mockBackend: MockBackend;
         expect(connection.request.method).toBe(RequestMethod.Post);
         expect(connection.request.url).toBe(apiUrl);
       });
-    service.getUserByID(2).subscribe(data => {
+    //service.getUserByID(2).subscribe(data => {
     //expect().toEqual('Ambili');
-    });
+    //});
   });  
     
 
@@ -90,9 +90,9 @@ let mockBackend: MockBackend;
         expect(connection.request.method).toBe(RequestMethod.Post);
         expect(connection.request.url).toBe(apiUrl);
       });
-    service.updateUser(UserData).subscribe(data => {
+    //service.updateUser(UserData).subscribe(data => {
     //expect().toEqual('Ambili');
-    });
+    //});
   });  
   
 });
