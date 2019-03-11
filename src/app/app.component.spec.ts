@@ -20,15 +20,19 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
+
   it(`should have as title 'Project Manager'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Project Manager');
   }));
+
   it('should render title in a h4 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
+    const app = fixture.debugElement.componentInstance;
+    app.title = 'Project Manager';
     expect(compiled.querySelector('h4').textContent).toContain('Project Manager');
   }));
   
